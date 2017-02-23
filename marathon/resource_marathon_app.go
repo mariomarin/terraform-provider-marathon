@@ -760,7 +760,7 @@ func resourceMarathonAppUpdate(d *schema.ResourceData, meta interface{}) error {
 
 	application := mutateResourceToApplication(d)
 
-	deploymentID, err := client.UpdateApplication(application, false)
+	deploymentID, err := client.UpdateApplication(application, d.Get("force_update").(bool))
 	if err != nil {
 		return err
 	}
@@ -773,7 +773,7 @@ func resourceMarathonAppDelete(d *schema.ResourceData, meta interface{}) error {
 	config := meta.(config)
 	client := config.Client
 
-	deploymentID, err := client.DeleteApplication(d.Id(), false)
+	deploymentID, err := client.DeleteApplication(d.Id(), d.Get("force_delete").(bool))
 	if err != nil {
 		return err
 	}

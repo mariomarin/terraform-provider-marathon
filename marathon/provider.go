@@ -44,6 +44,18 @@ func Provider() terraform.ResourceProvider {
 				Default:     "",
 				Description: "HTTP basic auth password",
 			},
+			"force_update": &schema.Schema{
+				Type:        schema.TypeBool,
+				Optional:    true,
+				Default:     false,
+				Description: "Force application update",
+			},
+			"force_delete": &schema.Schema{
+				Type:        schema.TypeBool,
+				Optional:    true,
+				Default:     false,
+				Description: "Force application delete",
+			},
 			"log_output": &schema.Schema{
 				Type:        schema.TypeBool,
 				Optional:    true,
